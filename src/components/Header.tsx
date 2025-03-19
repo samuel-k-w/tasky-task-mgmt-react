@@ -33,7 +33,7 @@ const Header = () => {
         </div>
       </div>
 
-      <div className="flex items-center space-x-4">
+      <div className="flex flex-col gap-4 items-center space-x-4">
         <div className="rounded-full overflow-hidden w-10 h-10 bg-gray-200">
           <img
             src="https://avatars.githubusercontent.com/u/123456?v=4"

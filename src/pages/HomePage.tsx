@@ -1,10 +1,11 @@
 import Header from "@/components/Header";
-import React from "react";
+import TaskTable from "@/components/TaskTable";
 
 const HomePage = () => {
   return (
-    <div>
+    <div className="max-h-screen">
       <Header />
+      <TaskTable />
     </div>
   );
 };
