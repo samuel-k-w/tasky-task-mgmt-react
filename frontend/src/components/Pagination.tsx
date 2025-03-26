@@ -27,17 +27,17 @@ const Pagination = () => {
   };
 
   return (
-    <div className="flex items-center justify-between p-4 border-t border-gray-600 text-sm text-gray-400">
+    <div className="flex flex-wrap items-center justify-between gap-3 p-3 border-t border-gray-700 text-sm text-gray-400">
       {/* Row Selection Info */}
-      <span>{`0 of ${totalRows} row(s) selected.`}</span>
+      <span className="whitespace-nowrap">{`0 of ${totalRows} row(s) selected.`}</span>
 
       {/* Pagination Controls */}
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-3 w-full sm:w-auto justify-between">
         {/* Rows Per Page Dropdown */}
         <div className="flex items-center gap-2">
-          <span>Rows per page</span>
+          <span className="hidden sm:inline">Rows per page</span>
           <Select onValueChange={(value) => setRowsPerPage(Number(value))}>
-            <SelectTrigger className="w-18">
+            <SelectTrigger className="w-20">
               <SelectValue placeholder={rowsPerPage} />
             </SelectTrigger>
             <SelectContent>
@@ -51,7 +51,7 @@ const Pagination = () => {
         </div>
 
         {/* Page Info */}
-        <span>{`Page ${currentPage} of ${totalPages}`}</span>
+        <span className="text-center">{`Page ${currentPage} of ${totalPages}`}</span>
 
         {/* Navigation Buttons */}
         <div className="flex gap-1">
@@ -60,32 +60,36 @@ const Pagination = () => {
             size="icon"
             disabled={currentPage === 1}
             onClick={() => handlePageChange(1)}
+            className="p-2"
           >
-            <ChevronsLeft className="w-4 h-4" />
+            <ChevronsLeft className="w-5 h-5 sm:w-4 sm:h-4" />
           </Button>
           <Button
             variant="ghost"
             size="icon"
             disabled={currentPage === 1}
             onClick={() => handlePageChange(currentPage - 1)}
+            className="p-2"
           >
-            <ChevronLeft className="w-4 h-4" />
+            <ChevronLeft className="w-5 h-5 sm:w-4 sm:h-4" />
           </Button>
           <Button
             variant="ghost"
             size="icon"
             disabled={currentPage === totalPages}
             onClick={() => handlePageChange(currentPage + 1)}
+            className="p-2"
           >
-            <ChevronRight className="w-4 h-4" />
+            <ChevronRight className="w-5 h-5 sm:w-4 sm:h-4" />
           </Button>
           <Button
             variant="ghost"
             size="icon"
             disabled={currentPage === totalPages}
             onClick={() => handlePageChange(totalPages)}
+            className="p-2"
           >
-            <ChevronsRight className="w-4 h-4" />
+            <ChevronsRight className="w-5 h-5 sm:w-4 sm:h-4" />
           </Button>
         </div>
       </div>
