@@ -2,6 +2,7 @@ import HomePage from "@/pages/HomePage";
 import { createBrowserRouter, RouteObject } from "react-router-dom";
 import Login from "../components/Login";
 import Register from "../components/Register";
+import ResetPassword from "@/components/ResetPassword";
 
 const routes: RouteObject[] = [
   {
@@ -18,6 +19,10 @@ const routes: RouteObject[] = [
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path: "/reset-password",
+        element: <ResetPassword />,
       },
       {
         path: "/create",
