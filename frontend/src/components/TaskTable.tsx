@@ -27,7 +27,7 @@ import {
   ChevronsUpDown,
 } from "lucide-react";
 import Pagination from "./Pagination";
-import { Card } from "./ui/card";
+// import { Card } from "./ui/card";
 
 const versions = ["1.0.1", "1.1.0-alpha", "2.0.0-beta1"];
 
