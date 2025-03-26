@@ -1,5 +1,7 @@
 import HomePage from "@/pages/HomePage";
 import { createBrowserRouter, RouteObject } from "react-router-dom";
+import Login from "../components/Login";
+import Register from "../components/Register";
 
 const routes: RouteObject[] = [
   {
@@ -11,11 +13,11 @@ const routes: RouteObject[] = [
       },
       {
         path: "/login",
-        element: <div>login</div>,
+        element: <Login />,
       },
       {
         path: "/register",
-        element: <div>login</div>,
+        element: <Register />,
       },
       {
         path: "/create",
