@@ -8,7 +8,7 @@ const Header = () => {
   const [search, setSearch] = useState("");
 
   return (
-    <header className="flex flex-col justify-between items-center p-4">
+    <header className="flex flex-col justify-between items-center p-2 md:p-4 w-full">
       <div className="flex justify-between items-center px-3 w-full">
         <div>
           <h2 className="text-2xl font-bold">Welcome back!</h2>

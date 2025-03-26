@@ -116,10 +116,10 @@ const TaskTable = () => {
   const [selectedVersion, setSelectedVersion] = useState("");
   return (
     <>
-      <Card className="p-4 m-2">
+      <div className="mx-2 md:mx-5 border rounded-md overflow-hidden">
         <Table>
-          <ScrollArea className="h-96 w-full rounded-md border">
-            <TableHeader className="sticky top-0 z-10">
+          <ScrollArea className="h-106">
+            <TableHeader className="sticky top-0 z-10 bg-blue-500">
               <TableRow>
                 <TableCell>
                   <Checkbox />
@@ -224,7 +224,7 @@ const TaskTable = () => {
               </TableRow>
             </TableHeader>
 
-            <TableBody className="w-full">
+            <TableBody className="w-full ">
               {tasks.map((task) => (
                 <TableRow key={task.id}>
                   <TableCell>
@@ -259,7 +259,7 @@ const TaskTable = () => {
           </ScrollArea>
         </Table>
         <Pagination />
-      </Card>
+      </div>
     </>
   );
 };

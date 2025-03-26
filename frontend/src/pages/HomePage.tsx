@@ -3,7 +3,7 @@ import TaskTable from "@/components/TaskTable";
 
 const HomePage = () => {
   return (
-    <div className="w-screen max-w-screen h-screen max-h-screen overflow-hidden">
+    <div className="max-w-screen max-h-screen">
       <Header />
       <TaskTable />
     </div>
