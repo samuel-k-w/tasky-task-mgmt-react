@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Filter, PlusCircle, Settings } from "lucide-react";
+import { DarkMode } from "./DarkMode";
 
 const Header = () => {
   const [search, setSearch] = useState("");
@@ -41,6 +42,7 @@ const Header = () => {
             className="w-full h-full object-cover"
           />
         </div>
+        <DarkMode />
 
         <Button variant="outline" className="flex items-center gap-1">
           <Settings size={16} /> View

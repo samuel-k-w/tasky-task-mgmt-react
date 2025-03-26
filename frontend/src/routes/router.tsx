@@ -9,6 +9,22 @@ const routes: RouteObject[] = [
         index: true,
         element: <HomePage />,
       },
+      {
+        path: "/login",
+        element: <div>login</div>,
+      },
+      {
+        path: "/register",
+        element: <div>login</div>,
+      },
+      {
+        path: "/create",
+        element: <div>login</div>,
+      },
+      {
+        path: "/detail/:id",
+        element: <div>login</div>,
+      },
     ],
   },
 ];
