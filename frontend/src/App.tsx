@@ -9,7 +9,7 @@ function App() {
   return (
     <QueryClientProvider client={client}>
       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-        <RouterProvider router={router} />;
+        <RouterProvider router={router} />
       </ThemeProvider>
     </QueryClientProvider>
   );
