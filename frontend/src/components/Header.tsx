@@ -3,9 +3,11 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Filter, PlusCircle, Settings } from "lucide-react";
 import { DarkMode } from "./DarkMode";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [search, setSearch] = useState("");
+  const navigate = useNavigate();
 
   return (
     <header className="flex flex-col justify-between items-center p-2 md:p-4 w-full">
@@ -15,6 +17,14 @@ const Header = () => {
           <p className="text-gray-600">
             Here's a list of your tasks for this month!
           </p>
+        </div>
+        <div>
+          <Button variant="outline" onClick={() => navigate("/login")}>
+            Login
+          </Button>
+          <Button variant="outline" onClick={() => navigate("/register")}>
+            Register
+          </Button>
         </div>
         <div className="rounded-full overflow-hidden w-10 h-10 bg-gray-200">
           <img
