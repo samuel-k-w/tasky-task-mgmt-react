@@ -3,7 +3,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Filter, PlusCircle, Settings } from "lucide-react";
 import { DarkMode } from "./DarkMode";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [search, setSearch] = useState("");
@@ -35,27 +35,51 @@ const Header = () => {
         </div>
       </div>
 
-      <nav className="flex items-center mt-4 justify-between px-2 space-x-2 w-full">
-        <Input
-          type="text"
-          placeholder="Filter tasks..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="border p-2 rounded-md"
-        />
+      <nav className="grid grid-cols-2 sm:grid-cols-3 lg:flex lg:items-center justify-between gap-2 mt-4 px-2 w-full">
+        {/* Search Input - Full width on mobile */}
+        <div className="col-span-2 sm:col-span-1 w-full">
+          <Input
+            type="text"
+            placeholder="Filter tasks..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="border p-2 rounded-md w-full"
+          />
+        </div>
 
-        <Button variant="outline" className="flex items-center gap-1">
+        {/* Buttons - Stack on mobile, inline on desktop */}
+        <Button
+          variant="outline"
+          className="flex items-center gap-1 w-full sm:w-auto"
+        >
           <PlusCircle size={16} /> Status
         </Button>
 
-        <Button variant="outline" className="flex items-center gap-1">
+        <Button
+          variant="outline"
+          className="flex items-center gap-1 w-full sm:w-auto"
+        >
           <PlusCircle size={16} /> Priority
         </Button>
-        <div className="flex flex-1/2 justify-end items-center gap-2">
-          <DarkMode />
-          <Button variant="outline" className="flex items-center gap-1">
+
+        <Link to="/create" className="w-full sm:w-auto">
+          <Button
+            variant="outline"
+            className="flex items-center gap-1 w-full sm:w-auto"
+          >
+            New Task
+          </Button>
+        </Link>
+
+        {/* Dark Mode & View Settings - Right aligned */}
+        <div className="flex justify-end items-center gap-2 w-full sm:w-auto">
+          <Button
+            variant="outline"
+            className="flex items-center gap-1 flex-1 sm:w-auto"
+          >
             <Settings size={16} /> View
           </Button>
+          <DarkMode />
         </div>
       </nav>
     </header>
