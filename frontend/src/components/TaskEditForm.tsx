@@ -11,13 +11,15 @@ import {
   SelectValue,
 } from "./ui/select";
 import { Checkbox } from "./ui/checkbox";
+import { useLocation } from "react-router-dom";
+import { useState } from "react";
 
-const type = [
+const types = [
   { label: "Documentation" },
   { label: "Bug" },
   { label: "Feature" },
 ];
-const status = [
+const statuses = [
   { label: "In Progress" },
   { label: "Backlog" },
   { label: "Todo" },
@@ -25,16 +27,24 @@ const status = [
   { label: "Done" },
 ];
 
-const priority = [{ label: "Medium" }, { label: "High" }, { label: "Low" }];
+const priorities = [{ label: "Medium" }, { label: "High" }, { label: "Low" }];
 
 export const TaskEditForm = () => {
+  const location = useLocation();
+  const task = location.state?.task;
+
+  const [title, setTitle] = useState(task.title);
+  const [description, setDescription] = useState(task.description);
+  const [priority, setPriority] = useState(task.priority);
+  const [type, setType] = useState(task.type);
+  const [status, setStatus] = useState(task.status);
+  const [favorite, setFavorite] = useState(task.favorite);
+
+  // const handleSubmit = (e: Event) => {
+  //   e.preventDefault();
+  // };
   return (
-    <form
-      className="grid md:grid-cols-3 gap-4 p-5"
-      onSubmit={(e) => {
-        e.preventDefault();
-      }}
-    >
+    <form className="grid md:grid-cols-3 gap-4 p-5">
       <Card className="md:col-span-2">
         <CardHeader>
           <CardTitle>Edit Your Task</CardTitle>
@@ -47,7 +57,8 @@ export const TaskEditForm = () => {
                 type="text"
                 placeholder="Task - ID"
                 required
-                className="input"
+                className="input overflow-hidden"
+                value={task.id}
                 disabled
               />{" "}
             </div>
@@ -58,6 +69,8 @@ export const TaskEditForm = () => {
                 placeholder="Title"
                 required
                 className="input"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
               />{" "}
             </div>
             <div className=" space-y-2">
@@ -66,55 +79,63 @@ export const TaskEditForm = () => {
                 placeholder="Description"
                 required
                 className="textarea"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
               />
             </div>
             <div className="flex gap-5">
               <div className=" space-y-2">
                 <Label htmlFor="title">Type</Label>
-                <Select>
+                <Select value={type} onValueChange={setType}>
                   <SelectTrigger>
                     <SelectValue placeholder="Select type" />
                   </SelectTrigger>
                   <SelectContent>
-                    {type.map((item) => (
-                      <SelectItem value={item.label}>{item.label}</SelectItem>
+                    {types.map((item) => (
+                      <SelectItem key={item.label} value={item.label}>
+                        {item.label}
+                      </SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
               </div>
               <div className=" space-y-2">
                 <Label htmlFor="title">Priority</Label>
-                <Select>
+                <Select value={priority} onValueChange={setPriority}>
                   <SelectTrigger>
                     <SelectValue placeholder="Select priority" />
                   </SelectTrigger>
                   <SelectContent>
-                    {priority.map((item) => (
-                      <SelectItem value={item.label}>{item.label}</SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-              <div className=" space-y-2">
-                <Label htmlFor="title">Status</Label>
-                <Select>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select status" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {status.map((item) => (
-                      <SelectItem value={item.label}>{item.label}</SelectItem>
+                    {priorities.map((item) => (
+                      <SelectItem key={item.label} value={item.label}>
+                        {item.label}
+                      </SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
               </div>
             </div>
+            <div className=" space-y-2">
+              <Label htmlFor="title">Status</Label>
+              <Select value={status} onValueChange={setStatus}>
+                <SelectTrigger>
+                  <SelectValue placeholder="Select status" />
+                </SelectTrigger>
+                <SelectContent>
+                  {statuses.map((item) => (
+                    <SelectItem key={item.label} value={item.label}>
+                      {item.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
 
             <div className=" space-y-2">
-              <Label className="flex items-center gap-2 p-2 hover:bg-muted/50 rounded">
+              <Label className="flex items-center gap-2 p-2 hover:bg-muted/50 ">
                 <Checkbox
-                // checked={field.value}
-                // onCheckedChange={field.onChange}
+                  checked={favorite}
+                  onCheckedChange={() => setFavorite(!favorite)}
                 />
                 <span>Favorite</span>
               </Label>
