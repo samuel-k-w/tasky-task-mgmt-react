@@ -16,9 +16,9 @@ import {
   Globe,
 } from "lucide-react";
 import { Link } from "react-router-dom";
-import EditProfile from "./EditProfile";
-import About from "./About";
-import Socials from "./Socials";
+import EditProfile from "../components/EditProfile";
+import About from "../components/About";
+import Socials from "../components/Socials";
 
 export default function Profile() {
   return (
