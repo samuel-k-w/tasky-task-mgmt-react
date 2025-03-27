@@ -3,7 +3,9 @@ import { createBrowserRouter, RouteObject } from "react-router-dom";
 import Login from "../components/Login";
 import Register from "../components/Register";
 import ResetPassword from "@/components/ResetPassword";
-import ProfilePage from "@/components/ProfilePage";
+import ProfilePage from "@/pages/ProfilePage";
+import TaskDetailPage from "@/pages/TaskDetailPage";
+import TaskCreatePage from "@/pages/TaskCreatePage";
 
 const routes: RouteObject[] = [
   {
@@ -31,11 +33,11 @@ const routes: RouteObject[] = [
       },
       {
         path: "/create",
-        element: <div>login</div>,
+        element: <TaskCreatePage />,
       },
       {
         path: "/detail/:id",
-        element: <div>login</div>,
+        element: <TaskDetailPage />,
       },
     ],
   },

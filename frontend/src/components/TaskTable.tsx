@@ -110,15 +110,47 @@ const tasks = [
     status: "In Progress",
     priority: "High",
   },
+  {
+    id: "TASK-5160",
+    tag: "Documentation",
+    title:
+      "Calculating the bus won't do anything, we need to navigate the back-end ...",
+    status: "In Progress",
+    priority: "High",
+  },
+  {
+    id: "TASK-5160",
+    tag: "Documentation",
+    title:
+      "Calculating the bus won't do anything, we need to navigate the back-end ...",
+    status: "In Progress",
+    priority: "High",
+  },
+  {
+    id: "TASK-5160",
+    tag: "Documentation",
+    title:
+      "Calculating the bus won't do anything, we need to navigate the back-end ...",
+    status: "In Progress",
+    priority: "High",
+  },
+  {
+    id: "TASK-5160",
+    tag: "Documentation",
+    title:
+      "Calculating the bus won't do anything, we need to navigate the back-end ...",
+    status: "In Progress",
+    priority: "High",
+  },
 ];
 
 const TaskTable = () => {
   const [selectedVersion, setSelectedVersion] = useState("");
   return (
     <>
-      <div className="mx-2 md:mx-5 border rounded-md overflow-hidden">
+      <div className="mx-2 my-auto md:mx-5 border rounded-md overflow-hidden h-full">
         <Table>
-          <ScrollArea className="h-106">
+          <ScrollArea className="md:h-106 h-140">
             <TableHeader className="sticky top-0 z-10 bg-blue-500">
               <TableRow>
                 <TableCell>
