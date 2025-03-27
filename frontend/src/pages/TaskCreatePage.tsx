@@ -1,11 +1,11 @@
 import Header from "@/components/Header";
-import { TaskForm } from "@/components/TaskForm";
+import { TaskCreateForm } from "@/components/TaskCreateForm";
 
 const TaskCreatePage = () => {
   return (
     <>
       <Header />
-      <TaskForm />
+      <TaskCreateForm />
     </>
   );
 };
