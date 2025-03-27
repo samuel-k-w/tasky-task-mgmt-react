@@ -13,7 +13,7 @@ const Header = () => {
   return (
     <header className="flex flex-col justify-between items-center p-2 md:p-4 w-full">
       <div className="flex justify-between items-center px-3 w-full">
-        <div className="md:flex gap-4">
+        <div className="flex gap-4">
           <Link
             to="/"
             className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-primary cursor-pointer"
@@ -23,8 +23,8 @@ const Header = () => {
             </span>
           </Link>
           <div>
-            <h2 className="text-2xl font-bold">Welcome back!</h2>
-            <p className="text-gray-200">
+            <h2 className="sm:text-3xl md:text-4xl font-bold">Welcome back!</h2>
+            <p className="text-gray-200 text-[14px] md:text-2xl">
               Here's a list of your tasks for you!
             </p>
           </div>
@@ -51,14 +51,14 @@ const Header = () => {
         </div>
         <Button
           variant="outline"
-          className="flex items-center gap-1 w-full sm:w-auto bg-purple-500 hover:bg-purple-400 text-white"
+          className="flex items-center gap-1 w-full sm:w-auto bg-purple-500 hover:bg-purple-400 tex"
         >
           <Filter size={16} /> Status
         </Button>
 
         <Button
           variant={"outline"}
-          className="flex items-center gap-1 w-full sm:w-auto bg-purple-500 hover:bg-purple-400 text-white"
+          className="flex items-center gap-1 w-full sm:w-auto bg-purple-500 hover:bg-purple-400 tex"
         >
           <Filter size={16} /> Priority
         </Button>
@@ -66,7 +66,7 @@ const Header = () => {
         <Link to="/create" className="w-full sm:w-auto">
           <Button
             variant="outline"
-            className="flex items-center gap-1 w-full sm:w-auto bg-purple-500 hover:bg-purple-400 text-white"
+            className="flex items-center gap-1 w-full sm:w-auto bg-purple-500 hover:bg-purple-400 tex"
           >
             <PlusCircle size={16} />
             New Task
