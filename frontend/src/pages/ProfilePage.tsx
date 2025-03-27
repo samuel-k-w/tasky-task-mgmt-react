@@ -32,7 +32,7 @@ export default function Profile() {
         </div>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="blue">
+            <Button variant={"outline"}>
               Settings <Settings />
             </Button>
           </DropdownMenuTrigger>
