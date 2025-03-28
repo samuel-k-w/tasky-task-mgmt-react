@@ -10,10 +10,10 @@ import { Card } from "@/components/ui/card";
 import {
   Settings,
   MessageCircle,
-  Calendar,
-  Mail,
-  Phone,
-  Globe,
+  // Calendar,
+  // Mail,
+  // Phone,
+  // Globe,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import EditProfile from "../components/EditProfile";
@@ -60,18 +60,20 @@ export default function Profile() {
           <p className="text-sm text-gray-400">Debre Berhan. Ethiopia</p>
         </div>
         {/* Skill Tags */}
-        {/* <div className="flex space-x-2 mt-4">
-          {["UX Research", "CX Strategy", "Management"].map((tag) => (
-            <span
-              key={tag}
-              className="px-3 py-1 text-sm bg-gray-100 rounded-full"
-            >
-              {tag}
-            </span>
-          ))}
-        </div> */}
+        <div className="flex flex-wrap gap-3 mt-2">
+          {["UX Research", "CX Strategy", "Management", "Developer"].map(
+            (tag) => (
+              <span
+                key={tag}
+                className="px-2 py-1 text-[14px] md:text-sm rounded-full border-amber-300 border-2"
+              >
+                {tag}
+              </span>
+            )
+          )}
+        </div>
         {/* Send Message Button */}
-        <Button className="mt-6 bg-gradient-to-r from-pink-500 to-purple-500 text-white flex items-center">
+        <Button className="mt- bg-gradient-to-r from-pink-500 to-purple-500 text-white flex items-center">
           <MessageCircle size={16} className="mr-2" /> Send Message
         </Button>
       </Card>
