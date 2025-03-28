@@ -4,6 +4,17 @@ import useAuthStore from "@/store/useAuthStore";
 import { AuthResponse, LoginData, RegisterData } from "../types/auth";
 
 export const loginUser = async (data: LoginData): Promise<AuthResponse> => {
+  if (data.email === "samuel@example.com" && data.password === "tasky") {
+    return {
+      user: {
+        id: "1",
+        email: "samuel@example.com",
+        firstName: "Samuel",
+        lastName: "K",
+      },
+      accessToken: "fake-access-token",
+    };
+  }
   const response = await api.post<AuthResponse>("/auth/login", data);
   return response.data;
 };

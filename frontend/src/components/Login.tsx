@@ -9,27 +9,23 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { FormEvent, useEffect, useState } from "react";
-// import { useAuth } from "@/store/useAuthStore";
+import { useState } from "react";
+import { useLogin } from "@/hooks/useAuth";
 
 const Login = () => {
-  // const { login, isLoading, currentUser } = useAuth();
-  // const navigate = useNavigate();
-  const isLoading = false;
+  const [email, setEmail] = useState("samuel@example.com");
+  const [password, setPassword] = useState("tasky");
+  const { mutate, isPending } = useLogin();
+  const navigate = useNavigate();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  // useEffect(() => {
-  //   if (currentUser && !isLoading) {
-  //     navigate("/");
-  //   }
-  // }, [currentUser, isLoading, navigate]);
-
-  /** Handle form submission */
-  const handleSubmit = async (e: FormEvent) => {
+  const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    // login({ email, password });
+    mutate(
+      { email, password },
+      {
+        onSuccess: () => navigate("/"),
+      }
+    );
   };
 
   return (
@@ -41,7 +37,7 @@ const Login = () => {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleLogin}>
           <div className="grid gap-4">
             <div className="grid gap-2">
               <Label htmlFor="email">Email</Label>
@@ -72,8 +68,8 @@ const Login = () => {
                 required
               />
             </div>
-            <Button type="submit" className="w-full" disabled={isLoading}>
-              {isLoading ? "Logging in..." : "Login"}
+            <Button type="submit" className="w-full" disabled={isPending}>
+              {isPending ? "Logging in..." : "Login"}
             </Button>
             <Button variant="outline" className="w-full">
               Continue with Google

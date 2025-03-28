@@ -9,45 +9,30 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { FormEvent, useEffect, useState } from "react";
-// import { useAuth, useAuthStore } from "@/store/useAuthStore";
+import { useState } from "react";
+import { useRegister } from "@/hooks/useAuth";
 
 const Register = () => {
-  // const { currentUser } = useAuthStore();
-  // const { register, isLoading, isSuccess } = useAuth();
-  const isLoading = false;
-  // const navigate = useNavigate();
-
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const { mutate, isPending } = useRegister();
+  const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   if (currentUser && !isLoading) {
-  //     navigate("/");
-  //   }
-  // }, [currentUser, isLoading, navigate]);
-
-  /** Handle form submission */
-  const handleSubmit = async (e: FormEvent) => {
+  const handleRegister = (e: React.FormEvent) => {
     e.preventDefault();
-
     if (password !== confirmPassword) {
       alert("Passwords do not match.");
       return;
     }
-
-    // await register({
-    //   email,
-    //   password,
-    //   confirmPassword,
-    //   firstName,
-    //   lastName,
-    //   role,
-    // });
-    // if (isSuccess) navigate("/");
+    mutate(
+      { email, firstName, lastName, password, confirmPassword },
+      {
+        onSuccess: () => navigate("/login"),
+      }
+    );
   };
 
   return (
@@ -59,7 +44,7 @@ const Register = () => {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleRegister}>
           <div className="grid gap-4">
             <div className="grid gap-2">
               <Label htmlFor="email">Email</Label>
@@ -115,8 +100,8 @@ const Register = () => {
               />
             </div>
             <div className="flex gap-4">
-              <Button type="submit" className="w-full" disabled={isLoading}>
-                {isLoading ? "Registering..." : "Register"}
+              <Button type="submit" className="w-full" disabled={isPending}>
+                {isPending ? "Registering..." : "Register"}
               </Button>
             </div>
             <Button variant="outline" className="w-full">
