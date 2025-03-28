@@ -12,6 +12,7 @@ import {
 } from "./ui/select";
 import { Checkbox } from "./ui/checkbox";
 import { useState } from "react";
+import { useCreateTask } from "@/hooks/usetask";
 
 const types = [
   { label: "Documentation" },
@@ -36,9 +37,18 @@ export const TaskCreateForm = () => {
   const [status, setStatus] = useState("");
   const [favorite, setFavorite] = useState(false);
 
-  // const handleSubmit = (e: Event) => {
-  //   e.preventDefault();
-  // };
+  const createTask = useCreateTask();
+  const handleCreate = () => {
+    createTask.mutate({
+      title,
+      description,
+      type,
+      status,
+      priority,
+      favorite,
+    });
+  };
+
   return (
     <form className="grid md:grid-cols-3 gap-4 p-5">
       <Card className="md:col-span-2">
@@ -126,6 +136,8 @@ export const TaskCreateForm = () => {
         <Button
           variant="outline"
           className="text-sky-500 border-sky-500 hover:bg-sky-500 hover:text-white"
+          onClick={handleCreate}
+          disabled={createTask.isPending}
         >
           ✈️ Save
         </Button>

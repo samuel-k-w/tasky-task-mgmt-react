@@ -13,6 +13,7 @@ import {
 import { Checkbox } from "./ui/checkbox";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
+import { useDeleteTask, useUpdateTask } from "@/hooks/usetask";
 
 const types = [
   { label: "Documentation" },
@@ -43,6 +44,17 @@ export const TaskEditForm = () => {
   // const handleSubmit = (e: Event) => {
   //   e.preventDefault();
   // };
+  const deleteTask = useDeleteTask();
+
+  const handleDelete = () => {
+    deleteTask.mutate(task.id);
+  };
+
+  const updateTask = useUpdateTask();
+
+  const handleUpdate = () => {
+    updateTask.mutate({ id: task.id, status: "Completed" });
+  };
   return (
     <form className="grid md:grid-cols-3 gap-4 p-5">
       <Card className="md:col-span-2">
@@ -148,6 +160,8 @@ export const TaskEditForm = () => {
       <div className="flex md:flex-col md:justify-start justify-between  mb-4 gap-4">
         <Button
           variant="outline"
+          onClick={handleUpdate}
+          disabled={updateTask.isPending}
           className="text-sky-500 border-sky-500 hover:bg-sky-500 hover:text-white"
         >
           ✈️ Save
@@ -161,6 +175,8 @@ export const TaskEditForm = () => {
         </Button>
         <Button
           variant="outline"
+          onClick={handleDelete}
+          disabled={deleteTask.isPending}
           className="text-red-500 border-red-500 hover:bg-red-500 hover:text-white"
         >
           ❌ Delete
