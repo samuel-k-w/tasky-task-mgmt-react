@@ -27,6 +27,7 @@ import {
   ChevronsUpDown,
 } from "lucide-react";
 import Pagination from "./Pagination";
+import { useNavigate } from "react-router-dom";
 // import { Card } from "./ui/card";
 
 const versions = ["1.0.1", "1.1.0-alpha", "2.0.0-beta1"];
@@ -34,118 +35,147 @@ const versions = ["1.0.1", "1.1.0-alpha", "2.0.0-beta1"];
 const tasks = [
   {
     id: "TASK-8782",
-    tag: "Documentation",
+    description: "any description",
+    type: "Documentation",
     title:
       "You can't compress the program without quantifying the open-source SSD...",
     status: "In Progress",
     priority: "Medium",
+    favorite: true,
   },
   {
     id: "TASK-7878",
-    tag: "Documentation",
+    description: "any description",
+    type: "Documentation",
     title:
       "Try to calculate the EXE feed, maybe it will index the multi-byte pixel!",
     status: "Backlog",
     priority: "Medium",
+    favorite: true,
   },
   {
     id: "TASK-7839",
-    tag: "Bug",
+    description: "any description",
+    type: "Bug",
     title: "We need to bypass the neural TCP card!",
     status: "Todo",
     priority: "High",
+    favorite: true,
   },
   {
     id: "TASK-5562",
-    tag: "Feature",
+    description: "any description",
+    type: "Feature",
     title:
       "The SAS interface is down, bypass the open-source pixel so we can back ...",
     status: "Backlog",
     priority: "Medium",
+    favorite: true,
   },
   {
     id: "TASK-8686",
-    tag: "Feature",
+    description: "any description",
+    type: "Feature",
     title:
       "I'll parse the wireless SSL protocol, that should driver the API panel!",
     status: "Canceled",
     priority: "Medium",
+    favorite: false,
   },
   {
     id: "TASK-1280",
-    tag: "Bug",
+    description: "any description",
+    type: "Bug",
     title:
       "Use the digital TLS panel, then you can transmit the haptic system!",
     status: "Done",
     priority: "High",
+    favorite: false,
   },
   {
     id: "TASK-7262",
-    tag: "Feature",
+    description: "any description",
+    type: "Feature",
     title:
       "The UTF8 application is down, parse the neural bandwidth so we can back...",
     status: "Done",
     priority: "High",
+    favorite: false,
   },
   {
     id: "TASK-1138",
-    tag: "Feature",
+    description: "any description",
+    type: "Feature",
     title:
       "Generating the driver won't do anything, we need to quantify the 1080p S...",
     status: "In Progress",
     priority: "Medium",
+    favorite: false,
   },
   {
     id: "TASK-7184",
-    tag: "Feature",
+    description: "any description",
+    type: "Feature",
     title: "We need to program the back-end THX pixel!",
     status: "Todo",
     priority: "Low",
+    favorite: false,
   },
   {
     id: "TASK-5160",
-    tag: "Documentation",
+    description: "any description",
+    type: "Documentation",
     title:
       "Calculating the bus won't do anything, we need to navigate the back-end ...",
     status: "In Progress",
     priority: "High",
+    favorite: false,
   },
   {
     id: "TASK-5160",
-    tag: "Documentation",
+    description: "any description",
+    type: "Documentation",
     title:
       "Calculating the bus won't do anything, we need to navigate the back-end ...",
     status: "In Progress",
     priority: "High",
+    favorite: false,
   },
   {
     id: "TASK-5160",
-    tag: "Documentation",
+    description: "any description",
+    type: "Documentation",
     title:
       "Calculating the bus won't do anything, we need to navigate the back-end ...",
     status: "In Progress",
     priority: "High",
+    favorite: false,
   },
   {
     id: "TASK-5160",
-    tag: "Documentation",
+    description: "any description",
+    type: "Documentation",
     title:
       "Calculating the bus won't do anything, we need to navigate the back-end ...",
     status: "In Progress",
     priority: "High",
+    favorite: false,
   },
   {
     id: "TASK-5160",
-    tag: "Documentation",
+    description: "any description",
+    type: "Documentation",
     title:
       "Calculating the bus won't do anything, we need to navigate the back-end ...",
     status: "In Progress",
     priority: "High",
+    favorite: false,
   },
 ];
 
 const TaskTable = () => {
   const [selectedVersion, setSelectedVersion] = useState("");
+  const navigate = useNavigate();
   return (
     <>
       <div className="mx-2 my-auto md:mx-5 border rounded-md overflow-hidden h-full">
@@ -256,16 +286,21 @@ const TaskTable = () => {
               </TableRow>
             </TableHeader>
 
-            <TableBody className="w-full ">
+            <TableBody className="w-full cursor-pointer">
               {tasks.map((task) => (
-                <TableRow key={task.id}>
+                <TableRow
+                  key={task.id}
+                  onClick={() =>
+                    navigate(`/detail/${task.id}`, { state: { task } })
+                  }
+                >
                   <TableCell>
                     <Checkbox />
                   </TableCell>
                   <TableCell>{task.id}</TableCell>
                   <TableCell>
                     <span className="bg-gray-200 text-gray-700 px-2 py-1 rounded-full">
-                      {task.tag}
+                      {task.type}
                     </span>{" "}
                     {task.title}
                   </TableCell>
