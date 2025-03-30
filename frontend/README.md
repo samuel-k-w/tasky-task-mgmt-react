@@ -16,7 +16,7 @@ DevTask is a specialized task management application built for software develope
 - Track project progress with developer-focused workflows
 - Integrate with common development workflows
 
-**Live Demo:** [link.com](#)
+**Live Demo:** [https://tasky-task-management-samuel.vercel.app](#)
 
 ## **✨ Key Features**
 
@@ -87,8 +87,9 @@ MIT © Samuel Kifle
 
 ---
 
+<!--
 ### **🔗 Portfolio Links**
 
 - **Live Demo**: [your-demo-link.com](#)
 - **GitHub Repo**: [https://github.com/samuel-k-w/](#)
-- **LinkedIn**: [https://www.linkedin.com/in/samuelkiflew](#)
+- **LinkedIn**: [https://www.linkedin.com/in/samuelkiflew](#) -->
