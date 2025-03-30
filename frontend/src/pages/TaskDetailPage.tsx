@@ -1,11 +1,12 @@
-import Header from "@/components/Header";
 import { TaskEditForm } from "@/components/TaskEditForm";
+import Layout from "@/layout/Layout";
 
 const TaskDetailPage = () => {
   return (
     <>
-      <Header />
-      <TaskEditForm />
+      <Layout>
+        <TaskEditForm />
+      </Layout>
     </>
   );
 };

@@ -1,14 +1,52 @@
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Filter, PlusCircle, Settings } from "lucide-react";
+import { Check, Filter, PlusCircle, Settings } from "lucide-react";
 import { DarkMode } from "./DarkMode";
 import { Link, useNavigate } from "react-router-dom";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "./ui/dropdown-menu";
 
-const Header = () => {
+// const ordering = [
+//   { label: "Title" },
+//   { label: "Status" },
+//   { label: "Priority" },
+// ];
+
+const viewOptions = [
+  { label: "Title", field: "title" as OrderBy },
+  { label: "Status", field: "status" as OrderBy },
+  { label: "Priority", field: "priority" as OrderBy },
+];
+
+type OrderDirection = "asc" | "desc" | "hide";
+type OrderBy = "title" | "status" | "priority";
+
+const Header = ({
+  handleOrderChange,
+  orderConfig,
+}: {
+  handleOrderChange: (field: OrderBy, direction: OrderDirection) => void;
+  orderConfig: {
+    title: OrderDirection;
+    status: OrderDirection;
+    priority: OrderDirection;
+  };
+}) => {
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
+  // const [selectedVersion, setSelectedVersion] = useState("");
+
+  const toggleColumnVisibility = (field: OrderBy) => {
+    // Toggle between 'asc' (visible) and 'hide'
+    const newDirection = orderConfig[field] === "hide" ? "asc" : "hide";
+    handleOrderChange(field, newDirection);
+  };
 
   return (
     <header className="flex flex-col justify-between items-center p-2 md:p-4 w-full">
@@ -24,7 +62,7 @@ const Header = () => {
           </Link>
           <div>
             <h2 className="sm:text-3xl md:text-4xl font-bold">Welcome back!</h2>
-            <p className="text-gray-200 text-[14px] md:text-2xl">
+            <p className="text-[14px] md:text-2xl text-pink-600">
               Here's a list of your tasks for you!
             </p>
           </div>
@@ -51,14 +89,14 @@ const Header = () => {
         </div>
         <Button
           variant="outline"
-          className="flex items-center gap-1 w-full sm:w-auto bg-purple-500 hover:bg-purple-400 tex"
+          className="flex items-center gap-1 w-full sm:w-auto bg-amber-400 hover:bg-amber-600 tex"
         >
           <Filter size={16} /> Status
         </Button>
 
         <Button
           variant={"outline"}
-          className="flex items-center gap-1 w-full sm:w-auto bg-purple-500 hover:bg-purple-400 tex"
+          className="flex items-center gap-1 w-full sm:w-auto bg-amber-400 hover:bg-amber-600 tex"
         >
           <Filter size={16} /> Priority
         </Button>
@@ -66,7 +104,7 @@ const Header = () => {
         <Link to="/create" className="w-full sm:w-auto">
           <Button
             variant="outline"
-            className="flex items-center gap-1 w-full sm:w-auto bg-purple-500 hover:bg-purple-400 tex"
+            className="flex items-center gap-1 w-full sm:w-auto bg-amber-400 hover:bg-amber-600 tex"
           >
             <PlusCircle size={16} />
             New Task
@@ -75,12 +113,36 @@ const Header = () => {
 
         {/* Dark Mode & View Settings - Right aligned */}
         <div className="flex justify-end items-center gap-2 w-full sm:w-auto">
-          <Button
-            variant="outline"
-            className="flex items-center gap-1 flex-1 sm:w-auto"
-          >
-            <Settings size={16} /> View
-          </Button>
+          <DropdownMenu>
+            <Button
+              type="button"
+              variant={"outline"}
+              className="flex-1 sm:w-auto bg-amber-400 hover:bg-amber-600"
+            >
+              <DropdownMenuTrigger asChild>
+                <div className="flex items-center gap-1 ">
+                  <Settings size={16} /> View
+                </div>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                {viewOptions.map((option) => (
+                  <DropdownMenuItem
+                    key={option.field}
+                    onSelect={(e) => {
+                      e.preventDefault();
+                      toggleColumnVisibility(option.field);
+                    }}
+                    className="flex items-center"
+                  >
+                    {option.label}
+                    {orderConfig[option.field] !== "hide" && (
+                      <Check className="ml-auto h-4 w-4" />
+                    )}
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </Button>
+          </DropdownMenu>
           <DarkMode />
         </div>
       </nav>
@@ -100,3 +162,35 @@ export default Header;
             Register
           </Button>
         </div> */
+
+{
+  /* <DropdownMenu>
+  <Button variant={"outline"} className="flex items-center gap-1 flex-1 sm:w-auto">
+    <DropdownMenuTrigger asChild>
+      <div className="flex justify-start items-center gap-0.5 leading-none w-20">
+        <Settings size={16} className="ml-auto" /> View
+      </div>
+    </DropdownMenuTrigger>
+    <DropdownMenuContent>
+      {ordering.map((version) => (
+        <DropdownMenuItem
+          key={version.label}
+          onSelect={() => setSelectedVersion(version.label)}
+        >
+          {version.icon} {version.label}
+          {version.label === selectedVersion && <Check className="ml-auto" />}
+        </DropdownMenuItem>
+      ))}
+    </DropdownMenuContent>
+  </Button>
+</DropdownMenu>  */
+}
+
+{
+  /* <Button
+            variant="outline"
+            className="flex items-center gap-1 flex-1 sm:w-auto"
+          >
+            <Settings size={16} /> View
+          </Button> */
+}

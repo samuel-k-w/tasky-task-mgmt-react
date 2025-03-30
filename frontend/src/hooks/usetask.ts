@@ -92,7 +92,7 @@ const tasks: TaskResponse[] = [
     favorite: false,
   },
   {
-    id: "TASK-5160",
+    id: "TASK-5170",
     description: "any description",
     type: "Documentation",
     title:
@@ -102,7 +102,7 @@ const tasks: TaskResponse[] = [
     favorite: false,
   },
   {
-    id: "TASK-5160",
+    id: "TASK-5162",
     description: "any description",
     type: "Documentation",
     title:
@@ -112,7 +112,7 @@ const tasks: TaskResponse[] = [
     favorite: false,
   },
   {
-    id: "TASK-5160",
+    id: "TASK-5163",
     description: "any description",
     type: "Documentation",
     title:
@@ -122,7 +122,7 @@ const tasks: TaskResponse[] = [
     favorite: false,
   },
   {
-    id: "TASK-5160",
+    id: "TASK-5164",
     description: "any description",
     type: "Documentation",
     title:
@@ -132,7 +132,7 @@ const tasks: TaskResponse[] = [
     favorite: false,
   },
   {
-    id: "TASK-5160",
+    id: "TASK-5165",
     description: "any description",
     type: "Documentation",
     title:
@@ -176,6 +176,14 @@ export const updateTask = async ({
 
 export const deleteTask = async (id: string): Promise<void> => {
   await api.delete(`/tasks/${id}`);
+};
+
+export const favoriteTask = async ({
+  id,
+  favorite,
+}: Partial<TaskResponse> & { id: string }): Promise<TaskResponse> => {
+  const response = await api.patch(`/tasks/${id}`, { favorite });
+  return response.data;
 };
 
 // Fetch paginated tasks
@@ -226,6 +234,18 @@ export const useDeleteTask = () => {
 
   return useMutation({
     mutationFn: deleteTask,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["tasks"] });
+    },
+  });
+};
+
+// Delete task
+export const useFavoriteTask = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: favoriteTask,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["tasks"] });
     },

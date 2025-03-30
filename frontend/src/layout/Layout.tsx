@@ -1,11 +1,10 @@
 import Header from "@/components/Header";
-import TaskTable from "@/components/TaskTable";
 import { useState } from "react";
 
 type OrderDirection = "asc" | "desc" | "hide";
 type OrderBy = "title" | "status" | "priority";
 
-const HomePage = () => {
+const Layout = ({ children }: { children: React.ReactNode }) => {
   const [orderConfig, setOrderConfig] = useState<{
     title: OrderDirection;
     status: OrderDirection;
@@ -24,12 +23,9 @@ const HomePage = () => {
   return (
     <div className="max-w-screen max-h-screen">
       <Header handleOrderChange={handleOrderChange} orderConfig={orderConfig} />
-      <TaskTable
-        handleOrderChange={handleOrderChange}
-        orderConfig={orderConfig}
-      />
+      <main>{children}</main>
     </div>
   );
 };
 
-export default HomePage;
+export default Layout;
