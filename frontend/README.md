@@ -1,54 +1,94 @@
-# React + TypeScript + Vite
+# **DevTask - Task Management for Software Developers**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+_A React-powered productivity app designed specifically for developers_
 
-Currently, two official plugins are available:
+![Demo Screenshot](./public/image1.png)
+![Demo Screenshot](./public/image4.png)
+![Demo Screenshot](./public/image5.png)
+![Demo Screenshot](./public/image2.png)
+![Demo Screenshot](./public/image3.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## **🚀 Overview**
 
-## Expanding the ESLint configuration
+DevTask is a specialized task management application built for software developers to:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Organize coding tasks, bugs, and features
+- Track project progress with developer-focused workflows
+- Integrate with common development workflows
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+**Live Demo:** [link.com](#)
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## **✨ Key Features**
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### **Developer-Centric Task Management**
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+- Create tasks with **code snippets** and **technical details**
+- Categorize by: `Feature`, `Bug`, `Refactor`, `Research`
+- Priority levels with color coding (Critical/High/Medium/Low)
+
+### **Project Tracking**
+
+- Kanban-style boards (Todo/In Progress/Code Review/Done)
+- Priority estimation tracking
+- GitHub/GitLab integration
+
+### **Technical Details**
+
+- **React** with functional components and hooks
+- **TypeScript** for type safety
+- **State Management**: Context API + useReducer _(or Redux if used)_
+- **UI**: Tailwind CSS + custom components
+- **Testing**: Jest + React Testing Library
+- **CI/CD**: GitHub Actions _(if applicable)_
+
+## **🛠️ Installation**
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/devtask.git
+   ```
+2. navigate folder:
+   ```bash
+   cd tasky-task mgmt-react && cd frontend
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+## **🔧 Scripts**
+
+| Command         | Description               |
+| --------------- | ------------------------- |
+| `cd frontend`   | go to frontend folder     |
+| `npm run dev`   | Starts development server |
+| `npm run build` | Creates production build  |
+| `npm run test`  | Runs unit tests           |
+| `npm run lint`  | Checks code quality       |
+
+## **📌 Why This Project?** _(For your job hunt)_
+
+This application demonstrates:  
+✅ **React proficiency** (hooks, state management, component architecture)  
+✅ **Problem-solving** for developer-specific workflows  
+✅ **Clean, maintainable code** with TypeScript  
+✅ **Testing practices** (unit/integration tests)  
+✅ **Attention to UX** for technical users
+
+---
+
+### **📄 License**
+
+MIT © Samuel Kifle
+
+---
+
+### **🔗 Portfolio Links**
+
+- **Live Demo**: [your-demo-link.com](#)
+- **GitHub Repo**: [https://github.com/samuel-k-w/](#)
+- **LinkedIn**: [https://www.linkedin.com/in/samuelkiflew](#)
