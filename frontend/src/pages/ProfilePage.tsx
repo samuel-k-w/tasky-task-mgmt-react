@@ -9,7 +9,7 @@ import {
 import { Card } from "@/components/ui/card";
 import {
   Settings,
-  MessageCircle,
+  // MessageCircle,
   // Calendar,
   // Mail,
   // Phone,
@@ -73,9 +73,9 @@ export default function Profile() {
           )}
         </div>
         {/* Send Message Button */}
-        <Button className="mt- bg-gradient-to-r from-pink-500 to-purple-500 text-white flex items-center">
+        {/* <Button className="mt- bg-gradient-to-r from-pink-500 to-purple-500 text-white flex items-center">
           <MessageCircle size={16} className="mr-2" /> Send Message
-        </Button>
+        </Button> */}
       </Card>
 
       {/* Main Content Grid */}
