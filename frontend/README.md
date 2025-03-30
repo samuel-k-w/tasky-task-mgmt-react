@@ -28,7 +28,7 @@ DevTask is a specialized task management application built for software develope
 
 ### **Project Tracking**
 
-- Kanban-style boards (Todo/In Progress/Code Review/Done)
+- style view (Todo/In Progress/Code Review/Done)
 - Priority estimation tracking
 - GitHub/GitLab integration
 
@@ -36,20 +36,20 @@ DevTask is a specialized task management application built for software develope
 
 - **React** with functional components and hooks
 - **TypeScript** for type safety
-- **State Management**: Context API + useReducer _(or Redux if used)_
+- **State Management**: sustand
 - **UI**: Tailwind CSS + custom components
-- **Testing**: Jest + React Testing Library
-- **CI/CD**: GitHub Actions _(if applicable)_
+- **Testing**: cypress + React Testing Library
+- **CI/CD**: GitHub Actions
 
 ## **🛠️ Installation**
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/devtask.git
+   git clone https://github.com/samuel-k-w/tasky-task-mgmt-react.git
    ```
 2. navigate folder:
    ```bash
-   cd tasky-task mgmt-react && cd frontend
+   cd tasky-task-mgmt-react && cd frontend
    ```
 3. Install dependencies:
    ```bash
